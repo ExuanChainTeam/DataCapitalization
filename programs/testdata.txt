@@ -1,0 +1,14 @@
+发送请求商户基本信息
+http://1.1.1.1:8888/server/pos?posId=10010001
+
+结果
+{"success":true,"statusCode":0,"message":"调用成功","body":{"posNo":null,"store":{"uuid":"4028278e5917729c01594884a4bd1286","code":"1001","name":"XXXX餐饮店"},"payments":[{"uuid":"4028278e51e93f5f01523a232b090003","code":"01","name":"现金"},{"uuid":"4028278e51e93f5f01523a235a960004","code":"02","name":"刷卡"},{"uuid":"4028278e571eede7015740578df60006","code":"03","name":"微支付"},{"uuid":"4028278e59a2a0c7015a5a97772905a5","code":"04","name":"不提成销售额"},{"uuid":"4028278e589bfd6b0158b42972eb2288","code":"30","name":"购物卡刷卡"},{"uuid":"4028278e571eede701574a92af3c03e2","code":"31","name":"购物卡预退款"},{"uuid":"4028278e589bfd6b0158b418a1462280","code":"32","name":"微信"},{"uuid":"4028278e589bfd6b0158b418c4bd2281","code":"33","name":"支付宝"}],"products":[{"uuid":"402827cc5fbb22a001600089db455aef","code":"100100011","name":"虚拟商品","store":{"uuid":"4028278e5917729c01594884a4bd1286","code":"1001","name":"XXXX餐饮店"},"tenant":{"uuid":"402827cc5fbb12a80160008705c744a2","code":"00001103","name":"XXXX广场"}}]}}
+
+商户有销售时上传销售
+发送： 信息在POST数据中，不要通过Request来取！
+http://1.1.1.1:8888/server/buy?
+{"payments":[{"line":"1","payment":"4028278e51e93f5f01523a232b090003","total":"0.01","charge":"0","discharge":"0"}],"products":[{"line":"1","product":"402827cc5fbb22a001600089db455aef","qty":"1","total":"0.01","price":"0.01","score":"0","discount":"0"}],"posNo":"10010001","flowNo":"07171226000000A","ocrTime":"2017.12.26 17:13:08","score":"0","qty":"1","realAmt":"0.01"}
+
+
+结果：
+{"success":true,"statusCode":0,"message":"调用成功","body":{"total":0,"products":[]}}
